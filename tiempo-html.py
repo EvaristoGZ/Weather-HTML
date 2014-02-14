@@ -6,6 +6,19 @@ import webbrowser
 print "Aplicación base con salida HTML || OpenWeatherMap"
 print ""
 
+fplantilla = open('plantilla.html','r')
+
+miplantilla = fplantilla
+
+html = ''
+
+for linea in html:
+	html += linea
+
+print html
+fresultado = open('resultado.html','w')
+fresultado.write('html')
+
 prov = ['Almería', 'Cádiz', 'Córdoba', 'Granada', 'Huelva', 'Jaén', 'Málaga', 'Sevilla']
 for elemento in prov:
 	print elemento
@@ -20,4 +33,4 @@ for elemento in prov:
 
 print datos.text
 
-webbrowser.open("tiempo.html")
+webbrowser.open("resultado.html")
