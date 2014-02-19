@@ -23,13 +23,13 @@ def cardinal(grados):
 		return 'NO'
 
 fplantilla = open('plantilla.html','r')
-
 miplantilla = fplantilla
 
 html = ''
-
 for linea in html:
 	html += linea
+miplantilla = Template(html)
+miplantilla.render(provincia="Lorem")
 
 print html
 fresultado = open('resultado.html','w')
