@@ -6,6 +6,22 @@ import webbrowser
 print "Aplicación base con salida HTML || OpenWeatherMap"
 print ""
 
+def cardinal(grados):
+	if (grados >= 337.5 and grados <= 360) or (grados >= 0 and grado <= 22.5):
+		return 'N' 
+	if grados >= 22.5 and grados <= 67.5:
+		return 'NE'
+	if grados >= 67.5 and grados <= 112.5:
+		return 'SE'
+	if grados >= 112.5 and grados <= 157.5:
+		return 'S'
+	if grados >= 157.5 and grados <= 202.5:
+		return 'SO'
+	if grados >= 202.5 and grados <= 245.5:
+		return 'O'
+	if grados >= 245.5 and grados <= 337.5:
+		return 'NO'
+
 fplantilla = open('plantilla.html','r')
 
 miplantilla = fplantilla
