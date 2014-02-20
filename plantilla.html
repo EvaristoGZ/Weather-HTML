@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>El Tiempo en Andalucía</title>
+	<title>El Tiempo en Andalucia</title>
 </head>
 <body>
-<h1>El Tiempo en Andalucía</h1>
+<h1>El Tiempo en Andalucia</h1>
 
 <ul>
-    {% for provincia in provincias %}
         <li>{{ provincia }}</li>
-    {% endfor %}
 </ul>
 
 <ul>
-	<li>Temperatura mínima prevista: {{ temp_min }}ºC</li>
-	<li>Temperatura máxima prevista: {{ temp_max }}ºC</li>
-	<li>Viento: {{ velocidad }}km/h Dirección: {{ direccion }} </li>
+	<li>Temperatura minima prevista: {{ temp_min }}</li>
+	<li>Temperatura maxima prevista: {{ temp_max }}</li>
+	<li>Viento: {{ velocidad }}kmh Direccion: {{ direccion }} </li>
 </ul>
 
 </body>

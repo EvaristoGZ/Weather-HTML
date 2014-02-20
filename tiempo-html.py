@@ -23,30 +23,30 @@ def cardinal(grados):
 		return 'NO'
 
 fplantilla = open('plantilla.html','r')
-miplantilla = fplantilla
-
-html = ''
-for linea in html:
-	html += linea
-miplantilla = Template(html)
-miplantilla.render(provincia="Lorem")
-
-print html
+plantilla = fplantilla
 fresultado = open('resultado.html','w')
-fresultado.write('html')
 
-prov = ['Almería', 'Cádiz', 'Córdoba', 'Granada', 'Huelva', 'Jaén', 'Málaga', 'Sevilla']
-for elemento in prov:
-	print elemento
-	datos = requests.get('http://api.openweathermap.org/data/2.5/weather',params={'q':'%s,spain' % elemento})
-	valores = json.loads(datos.text) # Carga los datos en un diccionario json #
-	temp_max = valores['main']['temp_max']
-	temp_max = round(temp_max - 273,1)
-	temp_min = valores['main']['temp_min']
-	temp_min = round(temp_min - 273,1)
-	velocidad = valores['wind']['speed']
-	direccion = valores['wind']['deg']
+codigo = ''
+for linea in fplantilla:
+	codigo += linea
+fplantilla = Template(codigo)
+fplantilla = fplantilla.render(provincia="Lorem")
 
-print datos.text
+resultado = fresultado.write(fplantilla)
+print fplantilla
+
+# prov = ['Almería', 'Cádiz', 'Córdoba', 'Granada', 'Huelva', 'Jaén', 'Málaga', 'Sevilla']
+# for elemento in prov:
+# 	print elemento
+# 	datos = requests.get('http://api.openweathermap.org/data/2.5/weather',params={'q':'%s,spain' % elemento})
+# 	valores = json.loads(datos.text) # Carga los datos en un diccionario json #
+# 	temp_max = valores['main']['temp_max']
+# 	temp_max = round(temp_max - 273,1)
+# 	temp_min = valores['main']['temp_min']
+# 	temp_min = round(temp_min - 273,1)
+# 	velocidad = valores['wind']['speed']
+# 	direccion = valores['wind']['deg']
+
+# print datos.text
 
 webbrowser.open("resultado.html")
