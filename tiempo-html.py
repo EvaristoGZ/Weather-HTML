@@ -46,10 +46,8 @@ for elemento in prov:
  	print elemento
  	datos = requests.get('http://api.openweathermap.org/data/2.5/weather',params={'q':'%s,spain' % elemento})
  	valores = json.loads(datos.text) # Carga los datos en un diccionario json #
- 	temp_max = valores['main']['temp_max']
- 	temp_max = round(temp_max - 273)
- 	temp_min = valores['main']['temp_min']
- 	temp_min = round(temp_min - 273)
+ 	temp_max = round(int(valores['main']['temp_max']) - 273)
+ 	temp_min = round((valores['main']['temp_min']) - 273)
  	velocidad = round((valores['wind']['speed']*1.609),1)
  	direccion = valores['wind']['deg']
  	puntocardinal = cardinal(direccion)
