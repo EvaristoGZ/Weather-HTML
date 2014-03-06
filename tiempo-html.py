@@ -40,7 +40,6 @@ allpuntocardinal = []
 
 prov = ['Almeria', 'Cadiz', 'Cordoba', 'Huelva', 'Jaen', 'Malaga', 'Sevilla']
 for elemento in prov:
- 	print elemento
  	datos = requests.get('http://api.openweathermap.org/data/2.5/weather',params={'q':'%s,spain' % elemento})
  	valores = json.loads(datos.text) # Carga los datos en un diccionario json #
  	temp_max = int(valores['main']['temp_max'] - 273)
@@ -52,10 +51,6 @@ for elemento in prov:
  	alltemp_min.append(temp_min)
  	allvelocidad.append(velocidad)
  	allpuntocardinal.append(puntocardinal)
-print alltemp_max
-print alltemp_min
-print allvelocidad
-print allpuntocardinal
 
 html = Template(codigo)
 html = html.render(provincias=prov, temp_max=alltemp_max, temp_min=alltemp_min, velocidad=allvelocidad, direccion=allpuntocardinal,)

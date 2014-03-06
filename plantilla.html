@@ -3,22 +3,60 @@
 <head>
 	<title>El Tiempo en Andalucia</title>
 </head>
+<style type="text/css"> 
+body{
+font-family:Verdana,Geneva,sans-serif;
+text-align:center;
+}
+h1{text-align:center}
+#centrar{
+margin:0 auto;
+width:1024px;
+}
+div .caja{ 
+float:left;
+width:291px;
+background:#cecece;
+margin:15px;
+padding:0 10px 10px;
+border-radius:5px
+}
+div .caja:hover{
+background:#999;
+}
+h1{color:#00A6FF}
+h2 a{
+color:#0074A2;
+text-decoration:none;
+}
+a{
+color:#000;
+text-decoration:none
+}
+ul{
+list-style:none;
+padding:0
+}
+p{margin:7px}
+</style>
 <body>
-
 <h1>El Tiempo en Andalucia</h1>
 
+<div id="centrar">
 {% set incremento = 0 %}
 {% for provincia in provincias %}
-	<h2>{{ provincia }}</h2>
+<div class="caja">
+	<h2><a href=http://www.google.es/maps/place/{{ provincia }} title="Ver en el mapa" target="_blank">{{ provincia }}</a></h2>
 
 <ul>
-	<li>Temperatura minima prevista: {{ temp_min[incremento] }} C</li>
-	<li>Temperatura maxima prevista: {{ temp_max[incremento] }} C</li>
-	<li>Viento: {{ velocidad[incremento] }} km/h Direccion: {{ direccion[incremento] }} </li>
+	<li><a href=http://www.google.es/#q=el+tiempo+{{provincia}} target="_blank">Temperatura minima prevista: {{ temp_min[incremento] }} C</a></li>
+	<li><a href=http://www.google.es/#q=el+tiempo+{{provincia}} target="_blank">Temperatura maxima prevista: {{ temp_max[incremento] }} C</a></li>
+	<li><a href=http://www.google.es/#q=el+tiempo+{{provincia}} target="_blank">Viento: {{ velocidad[incremento] }} km/h</a> <a href=http://www.google.es/#q=el+tiempo+{{provincia}} target="_blank">Direccion: {{ direccion[incremento] }}</a></li>
 </ul>
-
+</div>
 {% set incremento = incremento+1 %}
 {% endfor %}
+</div>
 
 </body>
 </html>
