@@ -38,27 +38,27 @@ allvelocidad = []
 alldireccion = []
 allpuntocardinal = []
 
-plantilla = Template(codigo)
-print fplantilla
-
 prov = ['Almería', 'Cádiz', 'Córdoba', 'Huelva', 'Jaén', 'Málaga', 'Sevilla']
 for elemento in prov:
  	print elemento
  	datos = requests.get('http://api.openweathermap.org/data/2.5/weather',params={'q':'%s,spain' % elemento})
  	valores = json.loads(datos.text) # Carga los datos en un diccionario json #
- 	temp_max = round(int(valores['main']['temp_max']) - 273)
- 	temp_min = round((valores['main']['temp_min']) - 273)
- 	velocidad = round((valores['wind']['speed']*1.609),1)
+ 	temp_max = int(valores['main']['temp_max'] - 273)
+ 	temp_min = int(valores['main']['temp_min'] - 273)
+ 	velocidad = int(valores['wind']['speed']*1.609)
  	direccion = valores['wind']['deg']
  	puntocardinal = cardinal(direccion)
  	alltemp_max.append(temp_max)
  	alltemp_min.append(temp_min)
  	allvelocidad.append(velocidad)
  	allpuntocardinal.append(puntocardinal)
- 	print temp_max
- 	print temp_min
- 	print velocidad
- 	print puntocardinal
+print alltemp_max
+print alltemp_min
+print allvelocidad
+print allpuntocardinal
 
+html = Template(codigo)
+html = html.render(provincia=elemento,temp_max=alltemp_max, temp_min=alltemp_min, velocidad=allvelocidad, direccion=allpuntocardinal,)
+fresultado.write(html)
 
-#webbrowser.open("resultado.html")
+webbrowser.open("resultado.html")
