@@ -11,15 +11,17 @@ def cardinal(grados):
 		return 'N' 
 	if grados >= 22.5 and grados <= 67.5:
 		return 'NE'
-	if grados >= 67.5 and grados <= 112.5:
+	if grados > 67.5 and grados <= 112.5:
 		return 'SE'
-	if grados >= 112.5 and grados <= 157.5:
+	if grados > 112.5 and grados <= 157.5:
 		return 'S'
-	if grados >= 157.5 and grados <= 202.5:
+	if grados > 157.5 and grados <= 202.5:
 		return 'SO'
-	if grados >= 202.5 and grados <= 245.5:
+	if grados > 202.5 and grados <= 245.5:
 		return 'O'
-	if grados >= 245.5 and grados <= 337.5:
+	if grados > 245.5 and grados <= 292.5:
+		return 'E'
+	if grados > 292.5 and grados < 337.5:
 		return 'NO'
 
 fplantilla = open('plantilla.html','r')
@@ -35,18 +37,19 @@ fplantilla = fplantilla.render(provincia="Lorem")
 resultado = fresultado.write(fplantilla)
 print fplantilla
 
-# prov = ['Almería', 'Cádiz', 'Córdoba', 'Granada', 'Huelva', 'Jaén', 'Málaga', 'Sevilla']
-# for elemento in prov:
-# 	print elemento
-# 	datos = requests.get('http://api.openweathermap.org/data/2.5/weather',params={'q':'%s,spain' % elemento})
-# 	valores = json.loads(datos.text) # Carga los datos en un diccionario json #
-# 	temp_max = valores['main']['temp_max']
-# 	temp_max = round(temp_max - 273,1)
-# 	temp_min = valores['main']['temp_min']
-# 	temp_min = round(temp_min - 273,1)
-# 	velocidad = valores['wind']['speed']
-# 	direccion = valores['wind']['deg']
+prov = ['Almería', 'Cádiz', 'Córdoba', 'Huelva', 'Jaén', 'Málaga', 'Sevilla']
+for elemento in prov:
+ 	print elemento
+ 	datos = requests.get('http://api.openweathermap.org/data/2.5/weather',params={'q':'%s,spain' % elemento})
+ 	valores = json.loads(datos.text) # Carga los datos en un diccionario json #
+ 	temp_max = valores['main']['temp_max']
+ 	temp_max = round(temp_max - 273)
+ 	temp_min = valores['main']['temp_min']
+ 	temp_min = round(temp_min - 273)
+ 	velocidad = valores['wind']['speed']
+ 	direccion = valores['wind']['deg']
+ 	variables = fplantilla.render(provincia = elemento, temp_max = temp_max)
 
-# print datos.text
+
 
 webbrowser.open("resultado.html")
