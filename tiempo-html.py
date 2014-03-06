@@ -38,7 +38,7 @@ allvelocidad = []
 alldireccion = []
 allpuntocardinal = []
 
-prov = ['Almería', 'Cádiz', 'Córdoba', 'Huelva', 'Jaén', 'Málaga', 'Sevilla']
+prov = ['Almeria', 'Cadiz', 'Cordoba', 'Huelva', 'Jaen', 'Malaga', 'Sevilla']
 for elemento in prov:
  	print elemento
  	datos = requests.get('http://api.openweathermap.org/data/2.5/weather',params={'q':'%s,spain' % elemento})
@@ -58,7 +58,7 @@ print allvelocidad
 print allpuntocardinal
 
 html = Template(codigo)
-html = html.render(provincia=elemento,temp_max=alltemp_max, temp_min=alltemp_min, velocidad=allvelocidad, direccion=allpuntocardinal,)
+html = html.render(provincias=prov,temp_max=alltemp_max, temp_min=alltemp_min, velocidad=allvelocidad, direccion=allpuntocardinal,)
 fresultado.write(html)
 
 webbrowser.open("resultado.html")

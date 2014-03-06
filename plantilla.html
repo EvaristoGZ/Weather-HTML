@@ -6,13 +6,13 @@
 <body>
 <h1>El Tiempo en Andalucia</h1>
 
-<ul>
-        <li>{{ provincia }}</li>
-</ul>
+{% for provincia in provincias %}
+	<h2>{{ provincia }}</h2>
+{% endfor %}
 
 <ul>
-	<li>Temperatura minima prevista: {{ temp_min }}</li>
-	<li>Temperatura maxima prevista: {{ temp_max }}</li>
+	<li>Temperatura minima prevista: {{ temp_min }} C</li>
+	<li>Temperatura maxima prevista: {{ temp_max }} C</li>
 	<li>Viento: {{ velocidad }}kmh Direccion: {{ direccion }} </li>
 </ul>
 
