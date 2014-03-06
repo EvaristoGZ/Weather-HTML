@@ -58,7 +58,7 @@ print allvelocidad
 print allpuntocardinal
 
 html = Template(codigo)
-html = html.render(provincias=prov,temp_max=alltemp_max, temp_min=alltemp_min, velocidad=allvelocidad, direccion=allpuntocardinal,)
+html = html.render(provincias=prov, temp_max=alltemp_max, temp_min=alltemp_min, velocidad=allvelocidad, direccion=allpuntocardinal,)
 fresultado.write(html)
 
 webbrowser.open("resultado.html")

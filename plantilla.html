@@ -4,17 +4,21 @@
 	<title>El Tiempo en Andalucia</title>
 </head>
 <body>
+
 <h1>El Tiempo en Andalucia</h1>
 
+{% set incremento = 0 %}
 {% for provincia in provincias %}
 	<h2>{{ provincia }}</h2>
-{% endfor %}
 
 <ul>
-	<li>Temperatura minima prevista: {{ temp_min }} C</li>
-	<li>Temperatura maxima prevista: {{ temp_max }} C</li>
-	<li>Viento: {{ velocidad }}kmh Direccion: {{ direccion }} </li>
+	<li>Temperatura minima prevista: {{ temp_min[incremento] }} C</li>
+	<li>Temperatura maxima prevista: {{ temp_max[incremento] }} C</li>
+	<li>Viento: {{ velocidad[incremento] }} km/h Direccion: {{ direccion[incremento] }} </li>
 </ul>
+
+{% set incremento = incremento+1 %}
+{% endfor %}
 
 </body>
 </html>
