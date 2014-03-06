@@ -36,6 +36,7 @@ alltemp_max = []
 alltemp_min = []
 allvelocidad = []
 alldireccion = []
+allpuntocardinal = []
 
 plantilla = Template(codigo)
 print fplantilla
@@ -49,9 +50,17 @@ for elemento in prov:
  	temp_max = round(temp_max - 273)
  	temp_min = valores['main']['temp_min']
  	temp_min = round(temp_min - 273)
- 	velocidad = valores['wind']['speed']
+ 	velocidad = round((valores['wind']['speed']*1.609),1)
  	direccion = valores['wind']['deg']
  	puntocardinal = cardinal(direccion)
+ 	alltemp_max.append(temp_max)
+ 	alltemp_min.append(temp_min)
+ 	allvelocidad.append(velocidad)
+ 	allpuntocardinal.append(puntocardinal)
+ 	print temp_max
+ 	print temp_min
+ 	print velocidad
  	print puntocardinal
 
-webbrowser.open("resultado.html")
+
+#webbrowser.open("resultado.html")
