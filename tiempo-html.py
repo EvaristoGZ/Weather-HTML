@@ -6,22 +6,22 @@ import webbrowser
 print "Aplicación base con salida HTML || OpenWeatherMap"
 print ""
 
-def cardinal(grados):
-	if (grados >= 337.5 and grados <= 360) or (grados >= 0 and grado <= 22.5):
+def cardinal(direccion):
+	if (direccion >= 337.5 and direccion <= 360) or (direccion >= 0 and direccion <= 22.5):
 		return 'N' 
-	if grados >= 22.5 and grados <= 67.5:
+	if direccion >= 22.5 and direccion <= 67.5:
 		return 'NE'
-	if grados > 67.5 and grados <= 112.5:
+	if direccion > 67.5 and direccion <= 112.5:
 		return 'SE'
-	if grados > 112.5 and grados <= 157.5:
+	if direccion > 112.5 and direccion <= 157.5:
 		return 'S'
-	if grados > 157.5 and grados <= 202.5:
+	if direccion > 157.5 and direccion <= 202.5:
 		return 'SO'
-	if grados > 202.5 and grados <= 245.5:
+	if direccion > 202.5 and direccion <= 245.5:
 		return 'O'
-	if grados > 245.5 and grados <= 292.5:
+	if direccion > 245.5 and direccion <= 292.5:
 		return 'E'
-	if grados > 292.5 and grados < 337.5:
+	if direccion > 292.5 and direccion < 337.5:
 		return 'NO'
 
 fplantilla = open('plantilla.html','r')
@@ -29,12 +29,15 @@ plantilla = fplantilla
 fresultado = open('resultado.html','w')
 
 codigo = ''
-for linea in fplantilla:
+for linea in plantilla:
 	codigo += linea
-fplantilla = Template(codigo)
-fplantilla = fplantilla.render(provincia="Lorem")
 
-resultado = fresultado.write(fplantilla)
+alltemp_max = []
+alltemp_min = []
+allvelocidad = []
+alldireccion = []
+
+plantilla = Template(codigo)
 print fplantilla
 
 prov = ['Almería', 'Cádiz', 'Córdoba', 'Huelva', 'Jaén', 'Málaga', 'Sevilla']
@@ -48,8 +51,7 @@ for elemento in prov:
  	temp_min = round(temp_min - 273)
  	velocidad = valores['wind']['speed']
  	direccion = valores['wind']['deg']
- 	variables = fplantilla.render(provincia = elemento, temp_max = temp_max)
-
-
+ 	puntocardinal = cardinal(direccion)
+ 	print puntocardinal
 
 webbrowser.open("resultado.html")
